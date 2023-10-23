@@ -17,6 +17,10 @@ pool.connect(function(err) {
 // Middleware to parse JSON data
 app.use(express.json());
 app.use(express.static('app'));
+app.use(
+  "/", 
+  express.static(__dirname) 
+);
 // Routes
 app.get('/', (req, res) => {
   db.query('SELECT * FROM products', (err, result) => {
@@ -26,25 +30,25 @@ app.get('/', (req, res) => {
     } else {
       let productList = '';
       result.forEach((product) => {
-        productList += 
-          <><li>
-            <h3>${product.name}</h3>
-            <p>${product.description}</p>
-            <p>Price: $${product.price}</p>
-            <p>Availability: ${product.availability ? 'In Stock' : 'Out of Stock'}</p>
-            <a href="/edit/${product.id}">Edit</a>
-            <button onclick="deleteProduct(${product.id})">Delete</button>
-          </li></>
+        productList += ""
+          // <li>
+          //   <h3>${product.name}</h3>
+          //   <p>${product.description}</p>
+          //   <p>Price: $${product.price}</p>
+          //   <p>Availability: ${product.availability ? 'In Stock' : 'Out of Stock'}</p>
+          //   <a href="/edit/${product.id}">Edit</a>
+          //   <button onclick="deleteProduct(${product.id})">Delete</button>
+          // </li>
         ;
       });
 
       res.send(
-        <><h1>Product List</h1><ul>${productList}</ul><script>
-          function deleteProduct(productId) {fetch('/delete/' + productId, { method: 'DELETE' })
-            .then(() => location.reload())
-            .catch((err) => console.error(err))};
+        // <><h1>Product List</h1><ul>${productList}</ul><script>
+        //   function deleteProduct(productId) {fetch('/delete/' + productId, { method: 'DELETE' })
+        //     .then(() => location.reload())
+        //     .catch((err) => console.error(err))};
           
-        </script></>
+        // </script></>
       );
     }
   });
