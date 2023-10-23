@@ -54,14 +54,3 @@ document.getElementById('addProductForm').addEventListener('submit', function(e)
       });
   }
   
-//   fetch('/').then(function(response) {
-//       return response.json();
-//     }).then(function(data) {
-//       var productList = document.getElementById('productList');
-//       data.forEach(function(product) {
-//         var productItem = document.createElement('div');
-//         productItem.dataset.id = product.id;
-//         productItem.innerHTML = '<h3>' + product.name + '</h3><p>Description: ' + product.description + '</p><p>Price: ' + product.price + '</p><p>Quantity: ' + product.quantity + '</p><button onclick="updateProduct(\'' + product.id + '\')">Update</button><button onclick="deleteProduct(\'' + product.id + '\')">Delete</button>';
-//         productList.appendChild(productItem);
-//       });
-//     });
